@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace dkproj
 {
-    public class TerrainData : MonoBehaviour
+    public class BaseScene : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()
