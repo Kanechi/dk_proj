@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masu_:
+    identifier_: empty_masu
     name_: "\u7A7A\u3044\u3066\u3044\u308B\u30DE\u30B9"
     masuType_: 0
     moveFlag_: 0

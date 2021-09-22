@@ -13,7 +13,9 @@ namespace dkproj
 
     public enum eMasuType
     {
-        None = 0,
+        None = -1,
+
+        Empty,
 
         Terrain,
 
@@ -32,14 +34,13 @@ namespace dkproj
         [Serializable]
         public class MasuData
         {
-            /// <summary>
-            /// 名前
-            /// </summary>
+            // 識別名
+            public string identifier_;
+
+            // 名前
             public string name_;
 
-            /// <summary>
-            /// マスタイプ
-            /// </summary>
+            // マスタイプ
             public eMasuType masuType_ = eMasuType.None;
 
             /// <summary>

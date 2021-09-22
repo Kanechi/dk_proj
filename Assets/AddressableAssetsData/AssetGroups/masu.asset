@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: masu
+  m_EditorClassIdentifier: 
+  m_GroupName: masu
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 091ef1fbeef25ab4ba0a4c12118d080e
+  m_SerializeEntries:
+  - m_GUID: ae46d7ead4484a544b94f489f3d00f63
+    m_Address: DungeonCore
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 7145002877022929515, guid: ae46d7ead4484a544b94f489f3d00f63,
+      type: 3}
+    m_TargetAsset: {fileID: 7145002877022929515, guid: ae46d7ead4484a544b94f489f3d00f63,
+      type: 3}
+  - m_GUID: fe843618d8abab24e94bb09ab50e9495
+    m_Address: DungeonEntrance
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 077680b664399db46850f7db1ddfb1ab
+    m_Address: EmptyMasu
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 6467f3971d0540d40a56c29c11a0405f
+    m_Address: Roost
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: df480ed36bb6f3e47993050ea6189b20
+    m_Address: TerrainSoil
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 723e2c98d47b59d47a0c0854d93c891b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 0b2e3e73c6a45964e82eb7d935cc3f75, type: 2}
+    - {fileID: 11400000, guid: 8a3bc1fe0623a1d44be4216f3df2cdc5, type: 2}

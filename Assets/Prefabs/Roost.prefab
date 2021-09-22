@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masu_:
+    identifier_: roost
     name_: "\u306D\u3050\u3089"
     masuType_: 3
     moveFlag_: 1

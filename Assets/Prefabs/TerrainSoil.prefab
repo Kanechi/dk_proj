@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masu_:
+    identifier_: terrain_soil
     name_: "\u571F"
     masuType_: 1
     moveFlag_: 0
