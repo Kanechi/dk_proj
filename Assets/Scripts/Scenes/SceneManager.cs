@@ -6,6 +6,7 @@ namespace dkproj
 {
     public class SceneManager : SingletonMonoBehaviour<SceneManager>
     {
+        [SerializeField]
         private BaseScene current_;
 
         public BaseScene Current => current_ != null ? current_ : current_ = GetComponent<BaseScene>(); 

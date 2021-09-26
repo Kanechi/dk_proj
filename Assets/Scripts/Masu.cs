@@ -1,18 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using System;
+using TouchScript.Gestures;
+using UnityEngine.Events;
 
-namespace dkproj
-{
-    public enum eBiome
-    {
+namespace dkproj {
+
+    public enum eBiome {
+
         None = 0,
+
         Cave = 1
     }
 
-    public enum eMasuType
-    {
+    public enum eMasuType {
         None = -1,
 
         Empty,
@@ -29,11 +29,9 @@ namespace dkproj
     /// <summary>
     /// マス
     /// </summary>
-    public class Masu : MonoBehaviour
-    {
+    public class Masu : MonoBehaviour {
         [Serializable]
-        public class MasuData
-        {
+        public class MasuData {
             // 識別名
             public string identifier_;
 
@@ -63,7 +61,6 @@ namespace dkproj
             /// true...通行可能
             /// </summary>
             public bool passable_;
-
 
 
 
@@ -99,5 +96,27 @@ namespace dkproj
 
         [SerializeField]
         private MasuData masu_;
+
+        [SerializeField]
+        private TapGesture m_tapGesture;
+
+        private void OnEnable() {
+
+            m_tapGesture.Tapped += OnTapped;
+        }
+
+        private void OnDisable() {
+            m_tapGesture.Tapped -= OnTapped;
+        }
+
+        private void OnTapped(object sender, EventArgs e) {
+            Debug.Log("Tapped !!");
+
+            m_masuTouchedEvent?.Invoke();
+        }
+
+        private UnityAction m_masuTouchedEvent;
+
+        public void SetMasuTouchedEvent(UnityAction tapped) => m_masuTouchedEvent = tapped;
     }
 }

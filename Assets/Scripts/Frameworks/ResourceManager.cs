@@ -7,11 +7,9 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public static class ResourceRequestExtenion
-{
+public static class ResourceRequestExtenion {
     // Resources.LoadAsyncの戻り値であるResourceRequestにGetAwaiter()を追加する
-    public static TaskAwaiter<Object> GetAwaiter(this ResourceRequest resourceRequest)
-    {
+    public static TaskAwaiter<Object> GetAwaiter(this ResourceRequest resourceRequest) {
         var tcs = new TaskCompletionSource<Object>();
         resourceRequest.completed += operation => {
             // ロードが終わった時点でTaskCompletionSource.TrySetResult
@@ -25,8 +23,7 @@ public static class ResourceRequestExtenion
 /// <summary>
 /// リソース管理
 /// </summary>
-public class ResourceManager : Singleton<ResourceManager>
-{
+public class ResourceManager : Singleton<ResourceManager> {
     // リソースマップ
     private Dictionary<string, AsyncOperationHandle> resourceMap_ = new Dictionary<string, AsyncOperationHandle>();
 
@@ -44,18 +41,15 @@ public class ResourceManager : Singleton<ResourceManager>
     /// <summary>
     /// リソースのクリア
     /// </summary>
-    public void Clear()
-    {
-        foreach (var handle in resourceMap_)
-        {
+    public void Clear() {
+        foreach (var handle in resourceMap_) {
             Addressables.Release(handle.Value);
         }
 
         resourceMap_.Clear();
     }
 
-    public void Unload(string path)
-    {
+    public void Unload(string path) {
         if (resourceMap_.ContainsKey(path) == false)
             return;
 
@@ -71,8 +65,7 @@ public class ResourceManager : Singleton<ResourceManager>
     /// <typeparam name="Ty"></typeparam>
     /// <param name="path"></param>
     /// <param name="completed"></param>
-    public async Task LoadAsync<Ty>(string path, UnityAction<Ty> completed) where Ty : UnityEngine.Object
-    {
+    public async Task LoadAsync<Ty>(string path, UnityAction<Ty> completed) where Ty : UnityEngine.Object {
         var res = Get<Ty>(path);
 
         if (res != null) {
