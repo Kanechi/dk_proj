@@ -6,6 +6,8 @@ namespace dkproj {
 
     public abstract class MasuFactory {
 
+        public abstract string Identifier { get; }
+
         public Masu Create(Transform parent, float posX, float posY) {
 
             Masu masu = CreateMasu(parent);
@@ -33,25 +35,55 @@ namespace dkproj {
 
     public abstract class MasuCreateFactory : MasuFactory {
 
-        protected abstract string Identifier { get; }
-
         protected override Masu CreateMasu(Transform parent) {
             return GameObject.Instantiate(ResourceManager.Instance.Get<GameObject>(Identifier), parent).GetComponent<Masu>();
         }
     }
 
+    /// <summary>
+    /// 空いているマス
+    /// </summary>
     public class EmptyMasuFactory : MasuCreateFactory {
 
-        protected override string Identifier => "EmptyMasu";
+        public override string Identifier => "EmptyMasu";
 
         protected override void SettingTouchedEvent(Masu masu) {
-            masu.SetMasuTouchedEvent(() => { Debug.Log("tap : " + Identifier); });
+
+            masu.SetMasuTouchedEvent(() => { 
+                
+                Debug.Log("tap : " + Identifier);
+
+                
+
+                // その他のスクロールウィンドウが開いている時点でおかしい？ 
+                //PopupCommandSelectWindow.Instance.Close();
+
+                // 現在作成可能な部屋のリストを持ってきてここで表示されるリストを作成する
+
+                // 空いているマスをタッチした際に表示されるリスト群の作成
+                List<CommandSelectCellData> dataList = new List<CommandSelectCellData>();
+
+                // ひとまず「ねぐら」アイコンを作成
+                dataList.Add(new CommandSelectCellData("Roost", "Roost_Icon", () => {
+
+                    // ねぐらアイコンをタッチしたらそのマスにねぐらを設置
+
+                    var pos = masu.transform.localPosition;
+
+                    masu.Child = MasuFactoryManager.Instance.Create(masu.transform.parent.transform, "Roost", pos.x, pos.y);
+
+                    // ねぐら作成したらウィンドウ閉じる
+                    PopupCommandSelectWindow.Instance.Close();
+                }));
+
+                PopupCommandSelectWindow.Instance.Open(CanvasManager.Instance.Current.transform, dataList);
+            });
         }
     }
 
     public class DungeonCoreFactory : MasuCreateFactory {
 
-        protected override string Identifier => "DungeonCore";
+        public override string Identifier => "DungeonCore";
 
         protected override void SettingTouchedEvent(Masu masu) {
             masu.SetMasuTouchedEvent(() => { Debug.Log("tap : " + Identifier); });
@@ -60,7 +92,7 @@ namespace dkproj {
 
     public class DungeonEntranceFactory : MasuCreateFactory {
 
-        protected override string Identifier => "DungeonEntrance";
+        public override string Identifier => "DungeonEntrance";
 
         protected override void SettingTouchedEvent(Masu masu) {
             masu.SetMasuTouchedEvent(() => { Debug.Log("tap : " + Identifier); });
@@ -69,20 +101,31 @@ namespace dkproj {
 
     public class TerrainSoilFactory : MasuCreateFactory {
 
-        protected override string Identifier => "TerrainSoil";
+        public override string Identifier => "TerrainSoil";
 
         protected override void SettingTouchedEvent(Masu masu) {
             masu.SetMasuTouchedEvent(() => { Debug.Log("tap : " + Identifier); });
         }
     }
 
+    public class RoostFactory : MasuCreateFactory {
+
+        public override string Identifier => "Roost";
+
+        protected override void SettingTouchedEvent(Masu masu)
+        {
+            masu.SetMasuTouchedEvent(() => { Debug.Log("tap : " + Identifier); });
+        }
+    }
+
     public class MasuFactoryManager : Singleton<MasuFactoryManager> {
 
-        private Dictionary<string, MasuFactory> m_factoryMap = new Dictionary<string, MasuFactory>() {
-            { "EmptyMasu", new EmptyMasuFactory() },
-            { "DungeonCore", new DungeonCoreFactory() },
-            { "DungeonEntrance", new DungeonEntranceFactory() },
-            { "TerrainSoil", new TerrainSoilFactory() }
+        private List<MasuFactory> m_factoryList = new List<MasuFactory>() {
+            new EmptyMasuFactory(),
+            new DungeonCoreFactory(),
+            new DungeonEntranceFactory(),
+            new TerrainSoilFactory(),
+            new RoostFactory()
         };
 
         /// <summary>
@@ -92,12 +135,14 @@ namespace dkproj {
         /// <param name="identifier"></param>
         public Masu Create(Transform parent, string identifier, float posX, float posY) {
 
-            if (m_factoryMap.ContainsKey(identifier) == false) {
-                Debug.Log("identifier is nothing !!");
-                return null;
+            foreach (var factory in m_factoryList) {
+                if (factory.Identifier == identifier) {
+                    return factory.Create(parent, posX, posY);
+                }
             }
 
-            return m_factoryMap[identifier].Create(parent, posX, posY);
+            Debug.Log("identifier is nothing !!");
+            return null;
         }
     }
 }

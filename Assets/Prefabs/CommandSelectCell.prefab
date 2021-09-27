@@ -127,6 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3536061840409855000}
+  - component: {fileID: 8044595713452118071}
   m_Layer: 0
   m_Name: CommandSelectCell
   m_TagString: Untagged
@@ -154,3 +155,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8044595713452118071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994122438570988749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b36511353f5814d880aed7f5e2773c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellIdentifier: command_select_cell
+  m_image: {fileID: 7783625187865940847}
+  m_button: {fileID: 4585769746288641925}

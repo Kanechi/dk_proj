@@ -6,7 +6,7 @@ using EnhancedUI.EnhancedScroller;
 namespace dkproj {
     public class CommandSelectWindow : BasePopupWindow, IEnhancedScrollerDelegate {
 
-        static public readonly string PREFAB_IDENTIFIER = "CommnadSelectWindow";
+        static public readonly string PREFAB_IDENTIFIER = "CommandSelectWindow";
 
         [SerializeField]
         private float CellSize => 100.0f;
@@ -33,7 +33,17 @@ namespace dkproj {
 
         }
 
+        public void CreateData(List<CommandSelectCellData> dataList) {
+
+            m_dataList = new List<CommandSelectCellData>();
+            foreach (var data in dataList) {
+                m_dataList.Add(data);
+            }
+        }
+
         public void Open(List<CommandSelectCellData> dataList) {
+
+            CreateData(dataList);
 
             m_scroller.Delegate = this;
 

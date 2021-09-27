@@ -27,13 +27,14 @@ namespace dkproj {
             await ResourceManager.Instance.LoadAsync<GameObject>("DungeonEntrance", prefab => loadingCount_++);
             await ResourceManager.Instance.LoadAsync<GameObject>("EmptyMasu", prefab => loadingCount_++);
             await ResourceManager.Instance.LoadAsync<GameObject>("TerrainSoil", prefab => loadingCount_++);
+            await ResourceManager.Instance.LoadAsync<GameObject>("Roost", prefab => loadingCount_++);
 
             await ResourceManager.Instance.LoadAsync<GameObject>("CommandSelectCell", prefab => loadingCount_++);
             await ResourceManager.Instance.LoadAsync<GameObject>("CommandSelectWindow", prefab => loadingCount_++);
 
             // リソースをすべてロードしたかチェック
             while (true) {
-                if (loadingCount_ == 6)
+                if (loadingCount_ == 7)
                     break;
             }
 
@@ -79,16 +80,7 @@ namespace dkproj {
 
 
 
-            // 空いているマスをタッチした際に表示されるリスト群の作成
-            List<CommandSelectCellData> dataList = new List<CommandSelectCellData>();
 
-            // ひとまず「ねぐら」
-            dataList.Add(new CommandSelectCellData("Roost", "Roost_Icon", () => { 
-            
-                // 空いているマスにねぐらを設置
-            }));
-
-            PopupCommandSelectWindow.Instance.Open(transform, dataList);
 
             sceneState_ = eSceneState.Main;
         }

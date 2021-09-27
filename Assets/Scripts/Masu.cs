@@ -79,11 +79,6 @@ namespace dkproj {
             public int index_;
 
             /// <summary>
-            /// このマスに取り付けられれているマス
-            /// </summary>
-            public MasuData child_;
-
-            /// <summary>
             /// このマスのバイオーム
             /// </summary>
             public eBiome biome_ = eBiome.None;
@@ -115,8 +110,12 @@ namespace dkproj {
             m_masuTouchedEvent?.Invoke();
         }
 
+        // このマスをタッチした際のイベント
         private UnityAction m_masuTouchedEvent;
-
         public void SetMasuTouchedEvent(UnityAction tapped) => m_masuTouchedEvent = tapped;
+
+        // このマスの子マス
+        private Masu m_child;
+        public Masu Child { get => m_child; set => m_child = value; }
     }
 }

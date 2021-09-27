@@ -76,7 +76,9 @@ namespace TouchScript.Devices.Display
                 // Mobiles / fullscreen
                 case RuntimePlatform.Android:
                 case RuntimePlatform.IPhonePlayer:
+#pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.TizenPlayer:
+#pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.WSAPlayerARM:
                 case RuntimePlatform.WSAPlayerX64:
                 case RuntimePlatform.WSAPlayerX86:
@@ -102,9 +104,13 @@ namespace TouchScript.Devices.Display
                     nativeResolution = new Vector2(res.width, res.height);
                     break;
                 // Probably TVs
+#pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.SamsungTVPlayer:
+#pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.Switch:
+#pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.WiiU:
+#pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.XboxOne:
                 case RuntimePlatform.tvOS:
                     // This has not been tested and is probably wrong.
@@ -112,7 +118,9 @@ namespace TouchScript.Devices.Display
                     res = Screen.currentResolution;
                     nativeResolution = new Vector2(res.width, res.height);
                     break;
+#pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.PSP2:
+#pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                     nativeResolution = new Vector2(960, 544);
                     break;
                 default:
@@ -190,16 +198,22 @@ namespace TouchScript.Devices.Display
                 // Mobiles / fullscreen
                 case RuntimePlatform.Android:
                 case RuntimePlatform.IPhonePlayer:
+#pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.TizenPlayer:
+#pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.WSAPlayerARM:
                 case RuntimePlatform.WSAPlayerX64:
                 case RuntimePlatform.WSAPlayerX86:
                     // We just hope that mobiles report their DPI correctly
                     break;
                 // Probably TVs
+#pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.SamsungTVPlayer:
+#pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.Switch:
+#pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.WiiU:
+#pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.XboxOne:
                 case RuntimePlatform.tvOS:
                     // This has not been tested and is probably wrong.
@@ -216,7 +230,9 @@ namespace TouchScript.Devices.Display
                         nativeDPI = 40;
                     }
                     break;
+#pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                 case RuntimePlatform.PSP2:
+#pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^®‚Å‚·
                     nativeDPI = 220.68f;
                     break;
                 default:

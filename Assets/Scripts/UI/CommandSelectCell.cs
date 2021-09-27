@@ -29,7 +29,7 @@ namespace dkproj {
             m_data = data;
             m_data.Cell = this;
 
-            m_image.sprite = m_data.Icon;
+            var sp = m_image.sprite;
 
             SetSelected(m_data.IsSelected);
         }
