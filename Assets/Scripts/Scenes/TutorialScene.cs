@@ -23,6 +23,8 @@ namespace dkproj {
                 OnFinalize
             };
 
+            await ResourceManager.Instance.LoadAsync<Sprite>("RoostTexture", prefab => loadingCount_++);
+
             await ResourceManager.Instance.LoadAsync<GameObject>("DungeonCore", prefab => loadingCount_++);
             await ResourceManager.Instance.LoadAsync<GameObject>("DungeonEntrance", prefab => loadingCount_++);
             await ResourceManager.Instance.LoadAsync<GameObject>("EmptyMasu", prefab => loadingCount_++);
@@ -34,7 +36,7 @@ namespace dkproj {
 
             // リソースをすべてロードしたかチェック
             while (true) {
-                if (loadingCount_ == 7)
+                if (loadingCount_ == 8)
                     break;
             }
 

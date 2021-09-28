@@ -16,7 +16,21 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: daf01d42c39887e4f841658790862eaf
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 651f572dd0bf67140aeb6ffc7d7d96b8
+    m_Address: Gobrin
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: aa375f8e94c7ee0448ec4f72722fc4b3
+    m_Address: RoostTexture
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 2800000, guid: aa375f8e94c7ee0448ec4f72722fc4b3, type: 3}
+    m_TargetAsset: {fileID: 2800000, guid: aa375f8e94c7ee0448ec4f72722fc4b3, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 723e2c98d47b59d47a0c0854d93c891b, type: 2}
   m_SchemaSet:

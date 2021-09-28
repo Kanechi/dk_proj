@@ -64,13 +64,15 @@ namespace dkproj {
                 List<CommandSelectCellData> dataList = new List<CommandSelectCellData>();
 
                 // ひとまず「ねぐら」アイコンを作成
-                dataList.Add(new CommandSelectCellData("Roost", "Roost_Icon", () => {
+                dataList.Add(new CommandSelectCellData("Roost", "RoostTexture", () => {
 
                     // ねぐらアイコンをタッチしたらそのマスにねぐらを設置
 
                     var pos = masu.transform.localPosition;
 
                     masu.Child = MasuFactoryManager.Instance.Create(masu.transform.parent.transform, "Roost", pos.x, pos.y);
+
+                    // ねぐらを設置したらダンジョン設置データにねぐらをフラグを追加
 
                     // ねぐら作成したらウィンドウ閉じる
                     PopupCommandSelectWindow.Instance.Close();
