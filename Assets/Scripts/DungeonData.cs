@@ -8,6 +8,7 @@ namespace dkproj
     /// <summary>
     /// ダンジョンのデータ
     /// クリアもしくはゲームオーバーしたらリセットされるデータ
+    /// 保存
     /// </summary>
     public class DungeonData : MonoBehaviour
     {

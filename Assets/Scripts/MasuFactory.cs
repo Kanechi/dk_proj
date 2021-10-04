@@ -73,6 +73,7 @@ namespace dkproj {
                     masu.Child = MasuFactoryManager.Instance.Create(masu.transform.parent.transform, "Roost", pos.x, pos.y);
 
                     // ねぐらを設置したらダンジョン設置データにねぐらをフラグを追加
+                    
 
                     // ねぐら作成したらウィンドウ閉じる
                     PopupCommandSelectWindow.Instance.Close();
