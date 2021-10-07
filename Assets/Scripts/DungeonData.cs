@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace dkproj
 {
+
+
+#if false
+
     /// <summary>
     /// ダンジョンのデータ
     /// クリアもしくはゲームオーバーしたらリセットされるデータ
@@ -89,4 +93,5 @@ namespace dkproj
 
         }
     }
+#endif
 }

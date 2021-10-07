@@ -14,18 +14,7 @@ using MiniJSON;
 using UnityEditor;
 #endif
 
-/// <summary>
-/// エディター用レコードテーブル
-/// </summary>
-/// <typeparam name="RecordT"></typeparam>
-public abstract class EditorRecordTable<RecordT> : ScriptableObject, IRecordTable<RecordT>
-{
-    protected List<RecordT> m_recordList = new List<RecordT>();
 
-    public List<RecordT> RecordList => m_recordList;
-
-    public abstract RecordT Get(uint key);
-}
 
 #if UNITY_EDITOR
 /// <summary>

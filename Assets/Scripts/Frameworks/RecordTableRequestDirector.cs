@@ -13,25 +13,13 @@ using UniRx.WebRequest;
 using UnityEngine.Events;
 
 
-/// <summary>
-/// リクエスト用レコードテーブル
-/// </summary>
-/// <typeparam name="RecordT"></typeparam>
-public abstract class RequestRecordTable<RecordT> : IRecordTable<RecordT>
-{
-    protected List<RecordT> m_recordList = new List<RecordT>();
-
-    public List<RecordT> RecordList => m_recordList;
-
-    public abstract RecordT Get(uint key);
-}
 
 /// <summary>
 /// リクエスト用レコードテーブル解析用ビルダーインターフェース
 /// </summary>
 /// <typeparam name="RecordT"></typeparam>
 public interface IRecordTableRequestPaserBuilder<RecordT> {
-    RequestRecordTable<RecordT> GetResult();
+    RecordTable<RecordT> GetResult();
     void Create();
     bool Import(string response);
 }
@@ -49,8 +37,8 @@ public abstract class JsonRequestPaserBuilder<RecordT, ResponseT> : IRecordTable
         IList<RecordT> Root { get;  }
     }
 
-    protected RequestRecordTable<RecordT> m_dataTable = null;
-    public RequestRecordTable<RecordT> GetResult() => m_dataTable;
+    protected RecordTable<RecordT> m_dataTable = null;
+    public RecordTable<RecordT> GetResult() => m_dataTable;
     public abstract void Create();
     public bool Import(string response) {
         var res = Json.Deserialize(response) as Dictionary<string, object>;
@@ -71,11 +59,9 @@ public class RecordTableRequestDirector<RecordT>
 {
     private IRecordTableRequestPaserBuilder<RecordT> m_builder = null;
 
-    protected IEnumerator m_enumerator = null;
-
     public RecordTableRequestDirector(IRecordTableRequestPaserBuilder<RecordT> builder) => m_builder = builder;
 
-    public void SendRequest(string url, UnityAction<RequestRecordTable<RecordT>> completed)
+    public void SendRequest(string url, UnityAction<RecordTable<RecordT>> completed)
     {
         ObservableWebRequest.GetAndGetBytes(url).Subscribe(
             download =>
