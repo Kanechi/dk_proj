@@ -5,93 +5,45 @@ using UnityEngine;
 
 namespace dkproj
 {
+    /// <summary>
+    /// 現在ダンジョンに配置している部屋(部屋と罠)の ID リスト
+    /// </summary>
+    [Serializable]
+    public class InstalledRoomData {
 
-
-#if false
+        [SerializeField]
+        public List<uint> m_installedRoomIdList = new List<uint>();
+    }
 
     /// <summary>
-    /// ダンジョンのデータ
-    /// クリアもしくはゲームオーバーしたらリセットされるデータ
-    /// 保存
+    /// このダンジョン中に覚えたスキルの ID リスト
     /// </summary>
-    public class DungeonData : MonoBehaviour
-    {
-        /// <summary>
-        /// このダンジョン中に覚えたスキル
-        /// </summary>
-        [Serializable]
-        public class SkillData {
-
-            // 部屋
-            [Serializable]
-            public class RoomSkillData {
-                // ねぐら
-                [SerializeField]
-                public bool m_roost = false;
-            }
-
-            // 召喚
-            [Serializable]
-            public class SummonSkillData {
-                // ゴブリン
-                [SerializeField]
-                public bool m_gobrin = false;
-            }
-
-            // 罠
-            [Serializable]
-            public class TrapSkillData {
-                // 回転のこぎり
-                [SerializeField]
-                public bool m_kaitenNokogiri = false;
-            }
-
-            [SerializeField]
-            public RoomSkillData m_roomSkillData = new RoomSkillData();
-
-            [SerializeField]
-            public SummonSkillData m_summonSkillData = new SummonSkillData();
-
-            [SerializeField]
-            public TrapSkillData m_trapSkillData = new TrapSkillData();
-        }
-
-        /// <summary>
-        /// このダンジョン中に配置している部屋と罠
-        /// </summary>
-        [Serializable]
-        public class RoomData {
-
-            [SerializeField]
-            public SkillData.RoomSkillData m_room = new SkillData.RoomSkillData();
-
-            [SerializeField]
-            public SkillData.TrapSkillData m_trap = new SkillData.TrapSkillData();
-        }
+    [SerializeField]
+    public class LearnedSkillData {
 
         [SerializeField]
-        private SkillData m_skillData = new SkillData();
-
-        [SerializeField]
-        private RoomData m_roomData = new RoomData();
-
-        /// <summary>
-        /// このダンジョン中で作成したスペルカード
-        /// </summary>
-        private List<uint> m_spellCardId = new List<uint>();
-        public List<uint> SpellCardID { get => m_spellCardId; }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        public List<uint> m_learnedSkillIdList = new List<uint>();
     }
-#endif
+
+    /// <summary>
+    /// ダンジョン中に作成したスペルカードの ID リスト
+    /// </summary>
+    [SerializeField]
+    public class CreatedSpellCardData {
+
+        [SerializeField]
+        public List<uint> m_createdSpellCardIdList = new List<uint>();
+    }
+
+    /// <summary>
+    /// ダンジョンデータ管理
+    /// デバッグ中はデバッグダンジョンデータのデータをここに設定する
+    /// リリース時は新規で生成したのち保存データが存在したら保存データを取得し設定
+    /// </summary>
+    public class DungeonDataManager : Singleton<DungeonDataManager> {
+
+        public InstalledRoomData m_installedRoomData = null;
+        public LearnedSkillData m_learnedSkillData = null;
+        public CreatedSpellCardData m_createdSpellCardData = null;
+    }
 }
