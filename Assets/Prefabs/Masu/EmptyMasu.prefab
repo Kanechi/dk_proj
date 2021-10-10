@@ -44,18 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5543a7bbee533224da8a4b8b44c0f277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masu_:
-    identifier_: empty_masu
-    name_: "\u7A7A\u3044\u3066\u3044\u308B\u30DE\u30B9"
-    masuType_: 0
-    moveFlag_: 0
-    destroyFlag_: 0
-    maxDurability_: 0
-    passable_: 1
-    hierarchy_: 0
-    index_: 0
-    biome_: 0
-    durability_: 0
+  m_masuData:
+    m_identifier: EmptyMasu
+    m_name: "\u7A7A\u3044\u3066\u3044\u308B\u30DE\u30B9"
+    m_masuType: 1
+    m_biomeType: 0
+    m_health: 0
+    m_maxHealth: 0
+    m_enableMoveFlag: 0
+    m_enableDestroyFlag: 0
+    m_enablePassableFlag: 1
+    m_child: {fileID: 0}
+    m_self: {fileID: 3453615540518376601}
   m_tapGesture: {fileID: 7007826083960428918}
 --- !u!1 &1664468398655839134
 GameObject:

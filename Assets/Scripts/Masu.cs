@@ -5,92 +5,91 @@ using UnityEngine.Events;
 
 namespace dkproj {
 
+    /// <summary>
+    /// バイオームタイプ
+    /// </summary>
     public enum eBiome {
 
         None = 0,
 
-        Cave = 1
+        Cave = 1    // 洞窟(仮)
     }
 
+    /// <summary>
+    /// マスタイプ
+    /// </summary>
     public enum eMasuType {
-        None = -1,
+        None = 0,
 
-        Empty,
+        Empty,      // 空いている地形
 
-        Terrain,
+        Terrain,    // 地形
 
-        Relics,
+        Relics,     // 遺物
 
-        Room,
+        Room,       // 部屋
 
-        Trap,
+        Trap,       // 罠
+    }
+
+    // 階層データ (x...左からの番号 y...階層番号)
+    public struct Point {
+        public float x;
+        public float y;
     }
 
     /// <summary>
     /// マス
     /// </summary>
     public class Masu : MonoBehaviour {
+
         [Serializable]
         public class MasuData {
             // 識別名
-            public string identifier_;
+            public string m_identifier;
 
             // 名前
-            public string name_;
+            public string m_name;
 
             // マスタイプ
-            public eMasuType masuType_ = eMasuType.None;
+            public eMasuType m_masuType;
 
-            /// <summary>
-            /// true...移動可能
-            /// 移動は非戦闘時のみ
-            /// </summary>
-            public bool moveFlag_;
+            // バイオームタイプ
+            public eBiome m_biomeType;
 
-            /// <summary>
-            /// true...破壊可能
-            /// </summary>
-            public bool destroyFlag_;
+            // 現在耐久度
+            public int m_health;
 
-            /// <summary>
-            /// 最大耐久度(最大ライフ)
-            /// </summary>
-            public int maxDurability_;
+            // 最大耐久度
+            public int m_maxHealth;
 
-            /// <summary>
-            /// true...通行可能
-            /// </summary>
-            public bool passable_;
+            // 位置データ (保存用 translate.localPosition の値と同じ)
+            public Point m_pos;
+
+            // 階層データ
+            public Point m_hierarchyData;
 
 
+            // true...自身を移動させることが出来る
+            public bool m_enableMoveFlag;
+
+            // true...自身を破壊可能
+            public bool m_enableDestroyFlag;
+
+            // true...モンスターやユニットが通行可能
+            public bool m_enablePassableFlag;
 
 
+            // 小マス(null...空いている空間)
+            public Masu m_child;
 
-            /// <summary>
-            /// 何階層目か
-            /// 上から昇順
-            /// </summary>
-            public int hierarchy_;
-
-            /// <summary>
-            /// その階層の何番目か
-            /// 左から昇順
-            /// </summary>
-            public int index_;
-
-            /// <summary>
-            /// このマスのバイオーム
-            /// </summary>
-            public eBiome biome_ = eBiome.None;
-
-            /// <summary>
-            /// 現在耐久度(ライフ)
-            /// </summary>
-            public int durability_;
+            // 自マス(自身のマス)
+            public Masu m_self;
         }
 
         [SerializeField]
-        private MasuData masu_;
+        private MasuData m_masuData = new MasuData();
+        public MasuData GetMasuData() => m_masuData;
 
         [SerializeField]
         private TapGesture m_tapGesture;
@@ -107,15 +106,11 @@ namespace dkproj {
         private void OnTapped(object sender, EventArgs e) {
             Debug.Log("Tapped !!");
 
-            m_masuTouchedEvent?.Invoke();
+            m_masuTouchedEvent?.Invoke(this);
         }
 
         // このマスをタッチした際のイベント
-        private UnityAction m_masuTouchedEvent;
-        public void SetMasuTouchedEvent(UnityAction tapped) => m_masuTouchedEvent = tapped;
-
-        // このマスの子マス
-        private Masu m_child;
-        public Masu Child { get => m_child; set => m_child = value; }
+        private UnityAction<Masu> m_masuTouchedEvent;
+        public void SetMasuTouchedEvent(UnityAction<Masu> tapped) => m_masuTouchedEvent = tapped;
     }
 }

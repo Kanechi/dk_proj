@@ -13,6 +13,9 @@ namespace dkproj {
         private Image m_image = null;
 
         [SerializeField]
+        private Image m_glayOutBg = null;
+
+        [SerializeField]
         private Button m_button = null;
 
         private CommandSelectCellData m_data = null;
@@ -21,6 +24,7 @@ namespace dkproj {
         public UnityAction<CommandSelectCell> Selected { get; set; } = null;
 
         private void Start() {
+
             m_button.OnClickAsObservable().Subscribe(_ => OnClicked());
         }
 
@@ -30,6 +34,10 @@ namespace dkproj {
             m_data.Cell = this;
 
             m_image.sprite = data.Icon;
+
+            // 有効化フラグの反転したものがグレイアウト画像のアクティブ
+            m_glayOutBg.gameObject.SetActive(!data.IsBtnEnabled);
+
 
             SetSelected(m_data.IsSelected);
         }

@@ -44,18 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5543a7bbee533224da8a4b8b44c0f277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masu_:
-    identifier_: dungeon_core
-    name_: "\u30C0\u30F3\u30B8\u30E7\u30F3\u30B3\u30A2"
-    masuType_: 2
-    moveFlag_: 1
-    destroyFlag_: 1
-    maxDurability_: 1
-    passable_: 1
-    hierarchy_: 0
-    index_: 0
-    biome_: 0
-    durability_: 0
+  m_masuData:
+    m_identifier: DungeonCore
+    m_name: "\u30C0\u30F3\u30B8\u30E7\u30F3\u30B3\u30A2"
+    m_masuType: 3
+    m_biomeType: 0
+    m_health: 1
+    m_maxHealth: 1
+    m_enableMoveFlag: 1
+    m_enableDestroyFlag: 1
+    m_enablePassableFlag: 1
+    m_child: {fileID: 0}
+    m_self: {fileID: 6912589775337680879}
   m_tapGesture: {fileID: 3239911846749439912}
 --- !u!1 &7907707532349254078
 GameObject:

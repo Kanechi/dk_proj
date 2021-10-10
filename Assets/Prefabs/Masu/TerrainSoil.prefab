@@ -189,16 +189,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5543a7bbee533224da8a4b8b44c0f277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masu_:
-    identifier_: terrain_soil
-    name_: "\u571F"
-    masuType_: 1
-    moveFlag_: 0
-    destroyFlag_: 1
-    maxDurability_: 100
-    passable_: 0
-    hierarchy_: 0
-    index_: 0
-    biome_: 0
-    durability_: 0
+  m_masuData:
+    m_identifier: TerrainSoil
+    m_name: "\u571F"
+    m_masuType: 2
+    m_biomeType: 0
+    m_health: 100
+    m_maxHealth: 100
+    m_enableMoveFlag: 0
+    m_enableDestroyFlag: 1
+    m_enablePassableFlag: 0
+    m_child: {fileID: 0}
+    m_self: {fileID: 317246389000688617}
   m_tapGesture: {fileID: 7775846403657117440}

@@ -98,6 +98,8 @@ namespace dkproj {
 
         public CommandSelectWindow Window { get; private set; } = null;
 
+        public bool CheckOpen() => Window != null && Window.IsOpen == true;
+
         public void Open(Transform parent, List<CommandSelectCellData> dataList) {
 
             if (Window != null && Window.IsOpen == true)

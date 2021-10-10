@@ -44,18 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5543a7bbee533224da8a4b8b44c0f277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masu_:
-    identifier_: roost
-    name_: "\u306D\u3050\u3089"
-    masuType_: 3
-    moveFlag_: 1
-    destroyFlag_: 1
-    maxDurability_: 0
-    passable_: 1
-    hierarchy_: 0
-    index_: 0
-    biome_: 0
-    durability_: 0
+  m_masuData:
+    m_identifier: Roost
+    m_name: "\u306D\u3050\u3089"
+    m_masuType: 4
+    m_biomeType: 0
+    m_health: 100
+    m_maxHealth: 100
+    m_enableMoveFlag: 1
+    m_enableDestroyFlag: 1
+    m_enablePassableFlag: 1
+    m_child: {fileID: 0}
+    m_self: {fileID: 3031163576763454549}
   m_tapGesture: {fileID: 3273865603596499876}
 --- !u!1 &1748376228889547268
 GameObject:

@@ -44,18 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5543a7bbee533224da8a4b8b44c0f277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masu_:
-    identifier_: dungeon_entrance
-    name_: "\u30C0\u30F3\u30B8\u30E7\u30F3\u306E\u5165\u308A\u53E3"
-    masuType_: 2
-    moveFlag_: 0
-    destroyFlag_: 0
-    maxDurability_: 0
-    passable_: 1
-    hierarchy_: 0
-    index_: 0
-    biome_: 0
-    durability_: 0
+  m_masuData:
+    m_identifier: DungeonEntrance
+    m_name: "\u30C0\u30F3\u30B8\u30E7\u30F3\u306E\u5165\u53E3"
+    m_masuType: 3
+    m_biomeType: 0
+    m_health: 0
+    m_maxHealth: 0
+    m_enableMoveFlag: 0
+    m_enableDestroyFlag: 0
+    m_enablePassableFlag: 1
+    m_child: {fileID: 0}
+    m_self: {fileID: 2086641927152461299}
   m_tapGesture: {fileID: 506387254533568828}
 --- !u!1 &3361545811002368930
 GameObject:

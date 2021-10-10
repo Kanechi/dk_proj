@@ -65,7 +65,7 @@ public class ResourceManager : Singleton<ResourceManager> {
     /// <typeparam name="Ty"></typeparam>
     /// <param name="path"></param>
     /// <param name="completed"></param>
-    public async Task LoadAsync<Ty>(string path, UnityAction<Ty> completed) where Ty : UnityEngine.Object {
+    public async Task LoadAsync<Ty>(string path, UnityAction<Ty> completed = null) where Ty : UnityEngine.Object {
         var res = Get<Ty>(path);
 
         if (res != null) {
